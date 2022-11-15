@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # fan speed gpio: #158
 # 0 - low speed  
