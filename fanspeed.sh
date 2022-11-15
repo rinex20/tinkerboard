@@ -6,8 +6,8 @@
 SPEED=0 
 
 
-echo "cpu temp."
-echo $[$(cat /sys/class/thermal/thermal_zone0/temp)/1000]°
+# echo "cpu temp."
+# echo $[$(cat /sys/class/thermal/thermal_zone0/temp)/1000]°
 
 echo 158 >/sys/class/gpio/export 
  
@@ -20,7 +20,7 @@ fi
 echo $SPEED >/sys/class/gpio/gpio158/value 
 echo 158 >/sys/class/gpio/unexport
 
-if [ $2 = "watch" ];then
-  echo "watch cpu temp."
-  watch -n 0.1 echo CPU: $[$(cat /sys/class/thermal/thermal_zone0/temp)/1000]°
-fi
+#if [ $2 = "watch" ];then
+#  echo "watch cpu temp."
+#  watch -n 0.1 echo CPU: $[$(cat /sys/class/thermal/thermal_zone0/temp)/1000]°
+#fi
