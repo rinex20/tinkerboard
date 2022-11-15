@@ -4,6 +4,8 @@
 # 0 - low speed  
 # 1 - high speed 
 SPEED=0 
+
+sudo -i
 echo "cpu temp."
 echo $[$(cat /sys/class/thermal/thermal_zone0/temp)/1000]°
 
