@@ -1,8 +1,32 @@
 #!/bin/bash
 
+# function
+# set_gpio_value gpio value
+# arg1: gpio# arg2: value
+set_gpio_value(){
+  echo $1 >/sys/class/gpio/export 
+  echo $2 >/sys/class/gpio/gpio$1/value
+  echo $1 >/sys/class/gpio/unexport
+}
+
 # adjust fan speed to reduce the fan noise
 # monitor cpu temp. if the temp. > 60 , set fan speed to high mode
 # otherwise keep low speed 
+# fan speed gpio: #158
+# 0 - low speed  
+# 1 - high speed 
+SPEED=0
+GPIO=158
+# echo "cpu temp."
+# echo $[$(cat /sys/class/thermal/thermal_zone0/temp)/1000]°
+
+if [ $1 = "low" ];then 
+  SPEED=0 
+elif [ $1 = "high" ];then 
+  SPEED=1 
+fi 
+
+set_gpio_value $GPIO $SPEED
 
 # install docker
 # Install Python dependencies.
