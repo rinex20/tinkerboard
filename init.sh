@@ -1,5 +1,25 @@
 #!/bin/bash
 
+#This script is only for Tinkder Edge R
+
+# backup source.list
+mv /etc/apt/source.list /etc/apt/source.list
+
+# add mirror (sjtu)
+cat > /etc/apt/source.list <<EOF
+deb https://mirror.sjtu.edu.cn/debian/ buster main contrib non-free
+deb https://mirror.sjtu.edu.cn/debian/ buster-updates main contrib non-free
+deb https://mirror.sjtu.edu.cn/debian/ buster-backports main contrib non-free
+deb https://mirror.sjtu.edu.cn/debian-security/ buster/updates main contrib non-free
+
+deb-src https://mirror.sjtu.edu.cn/debian/ buster-updates main contrib non-free
+deb-src https://mirror.sjtu.edu.cn/debian/ buster-backports main contrib non-free
+deb-src https://mirror.sjtu.edu.cn/debian/ buster main contrib non-free
+deb-src https://mirror.sjtu.edu.cn/debian-security/ buster/updates main contrib non-free
+EOF
+
+apt update
+
 # function
 # set_gpio_value gpio value
 # arg1: gpio# arg2: value
